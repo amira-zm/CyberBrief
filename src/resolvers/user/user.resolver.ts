@@ -1,4 +1,7 @@
 import { PrismaService } from 'nestjs-prisma';
+import { PrismaClient } from '@prisma/client'
+
+
 import { GqlAuthGuard } from '../../guards/gql-auth.guard';
 import {
   Resolver,
@@ -14,6 +17,7 @@ import { User } from '../../models/user.model';
 import { ChangePasswordInput } from './dto/change-password.input';
 import { UserService } from 'src/services/user.service';
 import { UpdateUserInput } from './dto/update-user.input';
+const prisma = new PrismaClient()
 
 @Resolver(() => User)
 @UseGuards(GqlAuthGuard)
